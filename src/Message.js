@@ -8,8 +8,10 @@ const Message = ({ text }) => {
 
   return (
     <div>
-      {user.photoURL ? <img src={user.photoURL} alt="avatar" /> : null}
-      {user.displayName ? <p>{user.displayName}</p> : null}
+      {user.photoURL ? (
+        <img className="rounded-full" src={user.photoURL} alt="avatar" />
+      ) : null}
+      {user.displayName ? <p className="text-2xl">{user.displayName}</p> : null}
       <p>{text}</p>
     </div>
   );

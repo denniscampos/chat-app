@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import db from "./firebase/config";
@@ -17,6 +17,9 @@ const Chatbox = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+  // to store query
+  const lastMessages = useRef();
+
   // Auth Info
   const auth = getAuth();
   const [user] = useAuthState(auth);
@@ -29,17 +32,19 @@ const Chatbox = () => {
 
   useEffect(() => {
     //sub to query with onsnapshot
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const data = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setMessages(data);
-    });
-
-    //clean up
-    return unsubscribe;
-  }, [q]);
+    if (messages !== lastMessages.current) {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setMessages(data);
+      });
+      //clean up
+      return unsubscribe;
+    }
+    // despite linter asking for "q" - it runs an infite loop. Do not include.
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,7 +68,7 @@ const Chatbox = () => {
         {messages.map((message) => (
           <li key={message.id}>
             <Message {...messages} />
-            {messages.text}
+            {message.text}
           </li>
         ))}
       </ul>
