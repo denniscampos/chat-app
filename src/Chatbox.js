@@ -66,7 +66,7 @@ const Chatbox = () => {
     <>
       <ul>
         {messages.map((message) => (
-          <li key={message.id}>
+          <li className="text-textPrimary font-bold" key={message.id}>
             <Message {...messages} />
             {message.text}
           </li>

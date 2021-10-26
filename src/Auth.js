@@ -32,13 +32,8 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className="container px-10">
       {/* <img src={user ? user.photoURL : null} alt="" /> */}
-      {user ? (
-        <span className="text-4xl text-textSecondary">
-          Welcome: {user.displayName}
-        </span>
-      ) : null}
       {user ? <Chatbox /> : <Signin />}
       {auth.currentUser ? <button onClick={logout}>Signout</button> : null}
     </div>

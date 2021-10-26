@@ -8,11 +8,14 @@ const Message = ({ text }) => {
 
   return (
     <div>
-      {user.photoURL ? (
-        <img className="rounded-full" src={user.photoURL} alt="avatar" />
-      ) : null}
-      {user.displayName ? <p className="text-2xl">{user.displayName}</p> : null}
-      <p>{text}</p>
+      <div className="user__information flex items-center py-6">
+        {user.photoURL ? (
+          <img className="rounded-full w-20" src={user.photoURL} alt="avatar" />
+        ) : null}
+        {user.displayName ? (
+          <p className="text-2xl ml-2 text-textSecondary">{user.displayName}</p>
+        ) : null}
+      </div>
     </div>
   );
 };
