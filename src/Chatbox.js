@@ -67,8 +67,7 @@ const Chatbox = () => {
       <ul>
         {messages.map((message) => (
           <li className="text-textPrimary font-bold" key={message.id}>
-            <Message {...messages} />
-            {/* {message.text} */}
+            <Message {...message} />
           </li>
         ))}
       </ul>
@@ -85,7 +84,7 @@ const Chatbox = () => {
           placeholder="Type your message here..."
         />
         <button
-          className="text-colorFive absolute top-0 right-0"
+          className="text-colorFive absolute top-4 right-7 font-bold "
           type="submit"
           disabled={!newMessage}
         >
