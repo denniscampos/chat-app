@@ -68,20 +68,28 @@ const Chatbox = () => {
         {messages.map((message) => (
           <li className="text-textPrimary font-bold" key={message.id}>
             <Message {...messages} />
-            {message.text}
+            {/* {message.text} */}
           </li>
         ))}
       </ul>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        className="mt-20 w-full relative inline-flex"
+        onSubmit={handleSubmit}
+      >
         <input
+          className="bg-bgTwo px-4 py-3 rounded-lg w-full placeholder-colorFour focus:text-colorOne text-xl"
           type="text"
           value={newMessage}
           onChange={handleChange}
-          placeholder="whats on your mind?"
+          placeholder="Type your message here..."
         />
-        <button type="submit" disabled={!newMessage}>
-          send
+        <button
+          className="text-colorFive absolute top-0 right-0"
+          type="submit"
+          disabled={!newMessage}
+        >
+          SEND
         </button>
       </form>
     </>
