@@ -1,12 +1,4 @@
-import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
-
 const Signin = () => {
-  const login = async () => {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-    await signInWithRedirect(auth, provider);
-  };
-
   return (
     <div className="flex flex-col justify-center items-center mt-20">
       <h1 className="text-colorOne text-5xl text-center font-bold my-4">

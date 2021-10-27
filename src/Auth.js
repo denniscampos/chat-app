@@ -1,7 +1,7 @@
 import Chatbox from "./Chatbox";
 import Signin from "./Signin";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import Loading from "./Loading";
 
 const Auth = () => {
@@ -9,12 +9,7 @@ const Auth = () => {
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
-    return (
-      <Loading type="spokes" color="#ff9e00" />
-      // <div>
-      //   <p>Logging in User...</p>
-      // </div>
-    );
+    return <Loading type="spokes" color="#ff9e00" />;
   }
 
   if (error) {
