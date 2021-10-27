@@ -2,6 +2,7 @@ import Chatbox from "./Chatbox";
 import Signin from "./Signin";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
+import Loading from "./Loading";
 
 const Auth = () => {
   const auth = getAuth();
@@ -9,9 +10,10 @@ const Auth = () => {
 
   if (loading) {
     return (
-      <div>
-        <p>Logging in User...</p>
-      </div>
+      <Loading type="spokes" color="#ff9e00" />
+      // <div>
+      //   <p>Logging in User...</p>
+      // </div>
     );
   }
 
@@ -23,20 +25,8 @@ const Auth = () => {
     );
   }
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <div className="container px-10">
-      {/* <img src={user ? user.photoURL : null} alt="" /> */}
-      {user ? <Chatbox /> : <Signin />}
-      {auth.currentUser ? <button onClick={logout}>Signout</button> : null}
-    </div>
+    <div className="container px-10">{user ? <Chatbox /> : <Signin />}</div>
   );
 };
 

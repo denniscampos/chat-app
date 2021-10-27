@@ -73,7 +73,7 @@ const Chatbox = () => {
       </ul>
 
       <form
-        className="mt-20 w-full relative inline-flex"
+        className="my-20 w-full relative inline-flex"
         onSubmit={handleSubmit}
       >
         <input

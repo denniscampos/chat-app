@@ -11,7 +11,13 @@ const Message = ({
       <div className="user__information flex mt-5">
         {photoURL ? (
           <img className="rounded-full w-20" src={photoURL} alt="Avatar" />
-        ) : null}
+        ) : (
+          <img
+            className="rounded-full w-20"
+            src="https://flawlesscurve.com/wp-content/plugins/wp-first-letter-avatar/images/default/256/mystery.png"
+            alt="Default Avatar"
+          />
+        )}
         {displayName ? (
           <span className="text-base ml-2 mt-2 text-textSecondary text-colorTwo">
             {displayName}
