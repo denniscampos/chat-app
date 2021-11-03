@@ -64,7 +64,7 @@ const Chatbox = () => {
 
   return (
     <>
-      <ul>
+      <ul className="flex flex-col-reverse">
         {messages.map((message) => (
           <li className="text-textPrimary font-bold" key={message.id}>
             <Message {...message} />
